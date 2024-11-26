@@ -75,7 +75,6 @@ public class WiseSayingController{
         if(!command.contains("?id=")) return;
         int modify_id = Integer.parseInt(command.split("=")[1]);
 
-
         Optional<WiseSaying> op = list.stream().filter(e -> e.getId() == modify_id).findFirst();
 
         if (op.isPresent()) {
