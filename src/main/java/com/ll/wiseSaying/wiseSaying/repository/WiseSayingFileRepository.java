@@ -1,4 +1,4 @@
-package com.ll.wiseSaing.repository;
+package com.ll.wiseSaying.wiseSaying.repository;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -7,7 +7,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 
-public class WiseSayingRepository  {
+public class WiseSayingFileRepository implements WiseSayingRepository{
 
     private static final String PATH = "D:\\son\\project\\programmers\\db\\wiseSaying\\";
     private Reader reader;
@@ -16,12 +16,11 @@ public class WiseSayingRepository  {
 
     public JSONArray selectData() throws IOException, ParseException {
         file = new File(PATH+"data.json");
-        Object obj = new Object();
 
         if (file.exists()) {
             reader = new FileReader(file);
             JSONParser parser = new JSONParser();
-            obj = parser.parse(reader);
+            Object obj = parser.parse(reader);
 
             return (JSONArray) obj;
         }
@@ -29,7 +28,8 @@ public class WiseSayingRepository  {
         return null;
     }
 
-    public int selectLastId() throws IOException, ParseException {
+
+    public int selectLastId() throws IOException {
         file = new File(PATH + "lastId.txt");
 
         if (file.exists()) {
@@ -51,6 +51,7 @@ public class WiseSayingRepository  {
         }
     }
 
+
     public void insertLastId(int id) throws IOException {
         file = new File(PATH+"lastId.txt");
         if (!file.exists()) file.createNewFile();
@@ -61,12 +62,14 @@ public class WiseSayingRepository  {
         bw.close();
     }
 
+
     public void deleteData(int id) {
         file = new File(PATH + id + ".json");
 
 
         file.delete();
     }
+
 
     public void updateData(JSONObject obj) throws IOException {
         file = new File(PATH + obj.get("id") + ".json");
@@ -80,6 +83,8 @@ public class WiseSayingRepository  {
             bw.close();
         }
     }
+
+
     public void build(JSONArray arr) throws IOException {
         file = new File(PATH+"data.json");
         if (!file.exists()) file.createNewFile();

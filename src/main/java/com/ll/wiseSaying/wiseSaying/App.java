@@ -1,6 +1,6 @@
-package com.ll.wiseSaing;
+package com.ll.wiseSaying.wiseSaying;
 
-import com.ll.wiseSaing.controller.WiseSayingController;
+import com.ll.wiseSaying.wiseSaying.controller.WiseSayingController;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -15,12 +15,22 @@ public class App {
     private static final String MODIFY = "수정";
     private static final String Build = "빌드";
 
-    private static final WiseSayingController wiseSayingController = new WiseSayingController();;
+    private static Scanner sc;
+    private static WiseSayingController wiseSayingController;
+
+    public App() {
+        this.sc = new Scanner(System.in);
+        this.wiseSayingController = new WiseSayingController(sc);
+    }
+
+    public App(Scanner sc) {
+        this.sc = sc;
+        this.wiseSayingController = new WiseSayingController(sc);
+    }
 
     public void run() throws IOException, ParseException {
         System.out.println("== 명언 앱 ==");
 
-        Scanner sc = new Scanner(System.in);
         String command = "";
 
         wiseSayingController.init();

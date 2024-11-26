@@ -1,4 +1,4 @@
-package com.ll.wiseSaing.model;
+package com.ll.wiseSaying.wiseSaying.model;
 
 public class WiseSaying {
     int id;

@@ -1,3 +1,5 @@
+package com.ll.wiseSaying.standard.util;
+
 import java.io.*;
 import java.util.Scanner;
 

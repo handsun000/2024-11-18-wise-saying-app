@@ -1,7 +1,7 @@
-package com.ll.wiseSaing.controller;
+package com.ll.wiseSaying.wiseSaying.controller;
 
-import com.ll.wiseSaing.model.WiseSaying;
-import com.ll.wiseSaing.service.WiseSayingService;
+import com.ll.wiseSaying.wiseSaying.model.WiseSaying;
+import com.ll.wiseSaying.wiseSaying.service.WiseSayingService;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -9,12 +9,17 @@ import java.util.*;
 
 public class WiseSayingController{
 
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc;
+    private final WiseSayingService wiseSayingService;
+    private final List<WiseSaying> list;
+
+    public WiseSayingController(Scanner sc) {
+        this.sc = sc;
+        this.wiseSayingService = new WiseSayingService();
+        this.list = new ArrayList<>();
+    }
 
     private static int id;
-    private static List<WiseSaying> list = new ArrayList<>();
-
-    private final WiseSayingService wiseSayingService = new WiseSayingService();
 
     public void insert() throws IOException {
         WiseSaying WiseSaying = new WiseSaying();
@@ -103,12 +108,14 @@ public class WiseSayingController{
             String[] keys = search.split("&");
 
             for (String key : keys) {
+                if(!key.contains("=")) break;
                 String[] keyValue = key.split("=");
                 map.put(keyValue[0], keyValue[1]);
             }
         }
         return map;
     }
+
     public void init() throws IOException, ParseException {
         wiseSayingService.getData(list);
         id = wiseSayingService.getLastId();
