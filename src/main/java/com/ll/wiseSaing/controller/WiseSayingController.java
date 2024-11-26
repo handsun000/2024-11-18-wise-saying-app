@@ -55,20 +55,9 @@ public class WiseSayingController{
         if(!command.contains("?id=")) return;
         int delete_id = Integer.parseInt(command.split("=")[1]);
 
-        boolean flag = false;
-        int index = 0;
-
-        for (int i = 0; i<list.size(); i++) {
-            WiseSaying wiseSaying = list.get(i);
-            if (wiseSaying.getId() == delete_id) {
-                index = i;
-                flag = true;
-                break;
-            }
-        }
+        boolean flag = list.removeIf(wiseSaying -> wiseSaying.getId() == delete_id);
 
         if (flag) {
-            list.remove(index);
             wiseSayingService.deleteData(delete_id);
             System.out.println(delete_id + "번 명언이 삭제되었습니다.");
         }
@@ -81,20 +70,10 @@ public class WiseSayingController{
         if(!command.contains("?id=")) return;
         int modify_id = Integer.parseInt(command.split("=")[1]);
 
-        WiseSaying wiseSaying = new WiseSaying();
-        int idx = 0;
+        Optional<WiseSaying> op = list.stream().filter(e -> e.getId() == modify_id).findFirst();
 
-        for (int i = 0; i<list.size(); i++) {
-            WiseSaying tmp = list.get(i);
-            if (tmp.getId() == modify_id) {
-                wiseSaying = tmp;
-                idx = i;
-                break;
-            }
-        }
-
-        if (wiseSaying.getId() != 0) {
-            wiseSaying.setId(modify_id);
+        if (op.isPresent()) {
+            WiseSaying wiseSaying = op.get();
 
             System.out.println("명언(기존) : " + wiseSaying.getContent());
             System.out.print("명언 : ");
@@ -104,7 +83,6 @@ public class WiseSayingController{
             System.out.print("작가 : ");
             wiseSaying.setAuthor(sc.nextLine());
 
-            list.set(idx, wiseSaying);
             wiseSayingService.updateData(wiseSaying);
         }
     }
