@@ -1,4 +1,4 @@
-package com.ll.wiseSaying.repository;
+package com.ll.wiseSaying.wiseSaying.repository;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +13,6 @@ public class WiseSayingFileRepository implements WiseSayingRepository{
     private Reader reader;
     private File file;
     private BufferedWriter bw;
-
 
     public JSONArray selectData() throws IOException, ParseException {
         file = new File(PATH+"data.json");

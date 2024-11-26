@@ -1,4 +1,4 @@
-package com.ll.wiseSaying;
+package com.ll.wiseSaying.wiseSaying;
 
 import org.json.simple.parser.ParseException;
 

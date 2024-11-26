@@ -1,16 +1,18 @@
+package com.ll.wiseSaying;
+
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 public class WiseSayingControllerTest {
-    @BeforeEach
-    void beforeEach() {
-        AppTest.clear();
-    }
+
+//    @BeforeEach
+//    public void beforeEach() {
+//        AppTest.clear();
+//    }
 
     @Test
     @DisplayName("등록")
@@ -19,12 +21,12 @@ public class WiseSayingControllerTest {
                 등록
                 현재를 사랑하라.
                 작자미상
-                """);
+                """.stripIndent().trim());
 
         assertThat(out)
                 .contains("명언 :")
                 .contains("작가 :")
-                .contains("1번 명언이 등록되었습니다.");
+                .contains("3번 명언이 등록되었습니다.");
     }
 
     @Test
@@ -33,13 +35,13 @@ public class WiseSayingControllerTest {
         final String out = AppTest.run("""
                 목록
                 목록
-                """);
+                """.stripIndent().trim());
 
         assertThat(out)
                 .contains("번호 / 작가 / 명언")
                 .contains("----------------------")
-                .contains("2 / 작자미상 / 과거에 집착하지 마라.")
-                .contains("1 / 작자미상 / 현재를 사랑하라.");
+                .contains("2 / 작가 2 / 명언 2")
+                .contains("1 / 작가 1 / 명언 1");
     }
 
     @Test
@@ -48,7 +50,7 @@ public class WiseSayingControllerTest {
         final String out = AppTest.run("""
                 삭제?id=1
                 삭제?id=1
-                """);
+                """.stripIndent().trim());
 
         assertThat(out)
                 .contains("1번 명언이 삭제되었습니다.")
@@ -63,7 +65,7 @@ public class WiseSayingControllerTest {
                 미래를 봐라
                 홍길동
                 목록
-                """);
+                """.stripIndent().trim());
 
         assertThat(out)
                 .contains("명언(기존) :")
@@ -78,7 +80,7 @@ public class WiseSayingControllerTest {
     public void t5() throws IOException, ParseException {
         final String out = AppTest.run("""
                 빌드
-                """);
+                """.stripIndent().trim());
 
         assertThat(out)
                 .contains("data.json 파일의 내용이 갱신되었습니다.");

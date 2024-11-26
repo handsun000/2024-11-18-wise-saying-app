@@ -1,8 +1,8 @@
-package com.ll.wiseSaying.service;
+package com.ll.wiseSaying.wiseSaying.service;
 
-import com.ll.wiseSaying.model.WiseSaying;
-import com.ll.wiseSaying.repository.WiseSayingFileRepository;
-import com.ll.wiseSaying.repository.WiseSayingRepository;
+import com.ll.wiseSaying.wiseSaying.model.WiseSaying;
+import com.ll.wiseSaying.wiseSaying.repository.WiseSayingFileRepository;
+import com.ll.wiseSaying.wiseSaying.repository.WiseSayingRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -14,10 +14,14 @@ import java.util.Map;
 
 public class WiseSayingService {
 
-    private final WiseSayingRepository wiseSayingRepository = new WiseSayingFileRepository();
+    private final WiseSayingRepository wiseSayingRepository;
     private final String CONTENT = "content";
     private final String AUTHOR = "author";
     private final String ID = "id";
+
+    public WiseSayingService() {
+        this.wiseSayingRepository = new WiseSayingFileRepository();
+    }
 
     public void getData(List<WiseSaying> list) throws IOException, ParseException {
         JSONArray arr = wiseSayingRepository.selectData();
