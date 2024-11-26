@@ -1,4 +1,4 @@
-package com.ll.wiseSaing.repository;
+package com.ll.wiseSaying.repository;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

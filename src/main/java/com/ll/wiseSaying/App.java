@@ -1,6 +1,6 @@
-package com.ll.wiseSaing;
+package com.ll.wiseSaying;
 
-import com.ll.wiseSaing.controller.WiseSayingController;
+import com.ll.wiseSaying.controller.WiseSayingController;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;

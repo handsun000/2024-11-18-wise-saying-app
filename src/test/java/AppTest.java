@@ -1,4 +1,4 @@
-import com.ll.wiseSaing.model.WiseSaying;
+import com.ll.wiseSaying.model.WiseSaying;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
-package com.ll.wiseSaing.service;
+package com.ll.wiseSaying.service;
 
-import com.ll.wiseSaing.model.WiseSaying;
-import com.ll.wiseSaing.repository.WiseSayingRepository;
+import com.ll.wiseSaying.model.WiseSaying;
+import com.ll.wiseSaying.repository.WiseSayingRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
