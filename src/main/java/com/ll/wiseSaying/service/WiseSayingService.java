@@ -1,6 +1,7 @@
 package com.ll.wiseSaying.service;
 
 import com.ll.wiseSaying.model.WiseSaying;
+import com.ll.wiseSaying.repository.WiseSayingFileRepository;
 import com.ll.wiseSaying.repository.WiseSayingRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +14,7 @@ import java.util.Map;
 
 public class WiseSayingService {
 
-    private final WiseSayingRepository wiseSayingRepository = new WiseSayingRepository();
+    private final WiseSayingRepository wiseSayingRepository = new WiseSayingFileRepository();
     private final String CONTENT = "content";
     private final String AUTHOR = "author";
     private final String ID = "id";
